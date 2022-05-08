@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자소서 글자수 계산기</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body >
+    <h1>자기소개</h1>
+    <textarea class="form-control" rows="3" id="jasoseol" onkeydown="counter();" placeholder="자기소개서를  써주세요">안녕하세요 저는 이희주입니다.</textarea>
+    <span id="count">(0/200)</span>
+    <button class = "btn1" type="button" onclick="btn();"> 확인 </button>
+    <script>
+        function counter() {
+            var content = document.getElementById('jasoseol').value;
+            if (content.length > 200) {
+                content = content.substring(0,200);
+                document.getElementById('jasoseol').value = content;
+            }
+            document.getElementById('count').innerHTML = '(' + content.length + '/200)';
+        }
+        function btn()
+        {
+            var content = document.getElementById('jasoseol').value;
+
+            if (content.length == 0){
+                alert("내용을 입력하세요!");
+            }
+            else {
+                alert("안녕하세요 반가워요!")
+            }
+        }
+        counter();
+    </script>
+</body>
+</html>
