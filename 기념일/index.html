@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>기념일 계산기</title>
+    <style>
+            @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic&display=swap');
+        * {
+            color: #333333;
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+        p {
+            margin-bottom: 1px;
+        }
+        .name{
+            font-weight: bold;
+        }
+        .photos {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #left{
+            width: 30px;
+            height: 30px;
+            margin-right: 30px;
+
+        }
+        #right{
+            width: 30px;
+            height: 30px;
+            margin-left: 30px;
+    
+
+        }
+        #cake {
+            width: 300px;
+            height:300px;
+            object-fit:cover;
+        }
+
+        .gray {
+            color: #a0a0a0;
+        }
+        .special-day {
+            display: flex;
+            justify-content: space-between;
+        }
+        .title {
+            display: flex;
+            align-items: center;
+            
+        }
+        .days-left {
+            text-align: right;
+            font-weight: bold;
+        }
+        .date {
+            text-align: right;
+            color: #a0a0a0;
+        }
+    </style>
+</head>
+<body class="container">
+    <section class='photos'>
+        <img id="left" src="left.png" onclick="pic(0)"alt="left">
+        <img id='cake' src="pic0.jpg" alt="cake">
+        <img id="right" src="right.png" onclick="pic(1)" alt="right">
+    </section>
+    <div class='container d-flex flex-column justify-content-center align-items-center mt-3'>
+        <h3 class ='name'>이희주</h3>
+        <h3 id='birth'>0일째</h3>
+        <h4 class="date">2001.1.12</h4>
+    </div>
+    <hr/>
+    <section class='special-day'>
+        <h3 class='title'>이희주 생일</h3>
+        <div class='date-box'>
+            <p id='birthday' class='days-left'>0일 남음</p>
+            <p class='date'>2023.1.12</p>
+        </div>
+    </section>
+    <hr/>
+    <section class='special-day'>
+        <h3 class='title'>8000일</h3>
+        <div class='date-box'>
+            <p id='thousand' class='days-left'>0일 남음</p>
+            <p id='thousand-date' class='date'>0000.00.00</p>
+        </div>
+    </section>
+    <hr>
+    <section class = 'special-day'>
+        <h3 class ='title'>야구 정규시즌</h3>
+        <div class = 'date-box'>
+            <p id='baseball-day' class='days-left'>0일 남음</p>
+            <p id ='baseball-date' class="date">2022.09.23</p>
+        </div>
+    </section>
+    <hr/>
+    <section class = 'special-day'>
+        <h3 class = 'title'>2학기 개강</h3>
+        <div class = 'date-box'>
+            <p id='start' class ='days-left'>0일 남음</p>
+            <p id ='start-date' class = 'date'>2022.09.01</p>
+        </div>
+    </section>
+    <hr>
+
+
+    <script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+    <script>
+        var now = new Date();
+        var start = new Date('2001-01-12');
+
+
+        var timeDiff = now.getTime() - start.getTime();
+        var day = Math.floor(timeDiff / (1000 * 60 * 60 * 24) + 1);
+        $('#birth').text('❤️'+day + '일째'+'❤️');
+
+
+        var birthday = new Date('2023-01-12');
+        var timeDiff2 = birthday.getTime() - now.getTime();
+        var day2 = Math.floor(timeDiff2 / (1000 * 60 * 60 * 24) + 1);
+        $('#birthday').text(day2 + '일 남음');
+
+     
+        var thousand = new Date(start.getTime() + 7999* (1000 * 60 * 60 * 24));
+        var thousandDate = thousand.getFullYear() + '.' + (thousand.getMonth()+1) + '.' + thousand.getDate();
+        $('#thousand-date').text(thousandDate);
+
+        var timeDiff3 = thousand.getTime() - now.getTime();
+        var day3 = Math.floor(timeDiff3 / (1000 * 60 * 60 * 24) + 1);
+        $('#thousand').text(day3 + '일 남음');
+        
+        var baseball = new Date('2022-09-23');
+        var timeDiff4 = baseball.getTime() - now.getTime();
+        var day4 = Math.floor(timeDiff4/(1000*60*60*24)+1);
+        $('#baseball-day').text(day4+"일 남음");
+
+        var start = new Date('2022-09-01');
+        var timeDiff5 = start.getTime() - now.getTime();
+        var day5 = Math.floor(timeDiff5/(1000*60*60*24)+1);
+        $('#start').text(day5+'일 남음');
+
+        var num = 0;
+        function pic(idx)
+        {
+         
+            if(idx == 1)
+            {
+                num++;
+                
+                if(num > 3)
+                    {
+                        num = 0;
+                    }
+            }
+       
+            else{
+                num --; 
+                
+                if(num < 0)
+                {
+                    num = 3;
+                }
+            }
+
+            var img = document.getElementById('cake');
+            img.setAttribute("src","pic"+num+".jpg");
+
+        }
+        </script>
+</body>
+</html>
