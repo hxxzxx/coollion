@@ -3,6 +3,17 @@
 *{
     font-family: 'Nanum Gothic', sans-serif;
 }
+#start-title{
+    margin-top: 180px;
+    font-weight: bolder;
+}
+#start{
+    margin-top:150px;
+    font-size: 25px;
+}
+button{
+    background-color: #D8F6CE;
+}
 article{
     display:flex;
     flex-direction: column;
@@ -13,4 +24,30 @@ article{
 }
 .result{
     display:none;
+}
+#title{
+    font-weight: bolder;
+}
+#A{
+    font-size: 20px;
+    font-weight: bold;
+}
+#B{
+    font-size: 20px;
+    font-weight: bold;
+}
+#pic{
+
+    height: 100%;
+    width:100%;
+    object-fit: cover;
+}
+#result {
+    margin-top: 100px;
+    font-size: 50px;
+    font-weight: bolder;
+}
+#explain {
+    margin-top: 100px;
+    line-height: 70px;
 }
